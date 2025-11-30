@@ -1,0 +1,28 @@
+# Flutter ephemeral/build files
+build/
+.flutter-ephemeral/
+.dart_tool/
+
+# VS Code
+.vscode/
+
+# Android build/cache
+android/.gradle/
+android/app/build/
+
+# iOS build/cache
+ios/Pods/
+ios/.symlinks/
+
+# Visual Studio user-specific files (Windows)
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
