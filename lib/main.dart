@@ -66,24 +66,43 @@ class _MatrixControlScreenState extends State<MatrixControlScreen>{
         title: const Text('Remote control Challenge !'),
       ),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            BoxGrid(
-              selectedRow: selectedRow,
-              selectedCol: selectedCol,
-            ),
-            const SizedBox(width: 40),
-            RemoteControl(
-              onUp: moveUp,
-              onDown: moveDown,
-              onLeft: moveLeft,
-              onRight: moveRight,
-            ),
-          ],
-        )
-      )
-    );
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth > 600) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  BoxGrid(selectedRow: selectedRow, selectedCol: selectedCol),
+                  const SizedBox(width: 40),
+                  RemoteControl(
+                    onUp: moveUp,
+                    onDown: moveDown,
+                    onLeft: moveLeft,
+                    onRight: moveRight,
+                  ),
+                ],
+              );
+            } else {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  BoxGrid(selectedRow: selectedRow, selectedCol: selectedCol),
+                  const SizedBox(height: 20),
+                  RemoteControl(
+                    onUp: moveUp,
+                    onDown: moveDown,
+                    onLeft: moveLeft,
+                    onRight: moveRight,
+                  ),
+                ],
+              );
+            }
+          },
+        ),
+      ),
+
+      
+      );
   }
 
 }
