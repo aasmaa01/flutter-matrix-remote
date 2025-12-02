@@ -1,16 +1,21 @@
-# flutter_application_2
+# Remote Control Challenge - Flutter App
 
-A new Flutter project.
+This is a simple Flutter app that displays a 5x5 grid and a remote control interface to move a selected box around.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- 5x5 grid with a highlighted box
+- Remote control with Up, Down, Left, Right buttons
+- Works on Linux, Android, and iOS (responsive layout recommended for smaller screens)
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Linux Desktop (Debug):**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="1272" height="747" alt="image" src="https://github.com/user-attachments/assets/9aaa1142-a899-446a-aafb-6837d76ddff5" />
+
+**Android Device:**
+
+<img width="1272" height="747" alt="image" src="https://github.com/user-attachments/assets/9aaa1142-a899-446a-aafb-6837d76ddff6" >
+
+
