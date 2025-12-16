@@ -29,10 +29,9 @@ class MatrixControlScreen extends StatefulWidget{
 
 }
 class _MatrixControlScreenState extends State<MatrixControlScreen>{
-  //int selectedIndex=0 ;
    
-  int selectedRow = 0; // 0 to 4
-  int selectedCol = 0; // 0 to 4
+  int selectedRow = 0; 
+  int selectedCol = 0; 
 
   
   
