@@ -59,6 +59,13 @@ class _MatrixControlScreenState extends State<MatrixControlScreen>{
       }
     }
     
+    void reset(){
+      setState(() {
+        selectedRow = 0;
+        selectedCol = 0;
+      });
+    }
+    
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +82,7 @@ class _MatrixControlScreenState extends State<MatrixControlScreen>{
                   BoxGrid(selectedRow: selectedRow, selectedCol: selectedCol),
                   const SizedBox(width: 40),
                   RemoteControl(
+                    onReset: reset,
                     onUp: moveUp,
                     onDown: moveDown,
                     onLeft: moveLeft,
@@ -89,6 +97,7 @@ class _MatrixControlScreenState extends State<MatrixControlScreen>{
                   BoxGrid(selectedRow: selectedRow, selectedCol: selectedCol),
                   const SizedBox(height: 20),
                   RemoteControl(
+                    onReset: reset,
                     onUp: moveUp,
                     onDown: moveDown,
                     onLeft: moveLeft,
@@ -158,6 +167,7 @@ class BoxGrid extends StatelessWidget {
 }
 // REMOTE WIDGET - Displays the directional buttons
 class RemoteControl extends StatelessWidget {
+  final VoidCallback onReset;
   final VoidCallback onUp;
   final VoidCallback onDown;
   final VoidCallback onLeft;
@@ -165,6 +175,7 @@ class RemoteControl extends StatelessWidget {
 
   const RemoteControl({
     super.key,
+    required this.onReset,
     required this.onUp,
     required this.onDown,
     required this.onLeft,
@@ -181,66 +192,85 @@ class RemoteControl extends StatelessWidget {
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        
         children: [
-          // UP button
+
+          Row(children: [
+          // reset button
           IconButton(
-            onPressed: onUp,
-            icon: const Icon(Icons.arrow_upward),
-            iconSize: 40,
+            onPressed: onReset,
+            icon: const Icon(Icons.refresh),
+            iconSize: 30,
             style: IconButton.styleFrom(
               backgroundColor: Colors.grey[800],
-              foregroundColor: Colors.white,
-            ),
+              foregroundColor: Colors.red,
+            )
           ),
-          const SizedBox(height: 8),
-          // LEFT, CENTER, RIGHT row
-          Row(
-            mainAxisSize: MainAxisSize.min,
+          ],),
+          const SizedBox(height: 10),
+          Column(
             children: [
-              // LEFT button
-              IconButton(
-                onPressed: onLeft,
-                icon: const Icon(Icons.arrow_back),
-                iconSize: 40,
-                style: IconButton.styleFrom(
-                  backgroundColor: Colors.grey[800],
-                  foregroundColor: Colors.white,
-                ),
+            // UP button
+            IconButton(
+              onPressed: onUp,
+              icon: const Icon(Icons.arrow_upward),
+              iconSize: 40,
+              style: IconButton.styleFrom(
+                backgroundColor: Colors.grey[800],
+                foregroundColor: Colors.white,
               ),
-              const SizedBox(width: 8),
-              // CENTER (non-functional placeholder)
-              Container(
-                width: 56,
-                height: 56,
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              const SizedBox(width: 8),
-              // RIGHT button
-              IconButton(
-                onPressed: onRight,
-                icon: const Icon(Icons.arrow_forward),
-                iconSize: 40,
-                style: IconButton.styleFrom(
-                  backgroundColor: Colors.grey[800],
-                  foregroundColor: Colors.white,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          // DOWN button
-          IconButton(
-            onPressed: onDown,
-            icon: const Icon(Icons.arrow_downward),
-            iconSize: 40,
-            style: IconButton.styleFrom(
-              backgroundColor: Colors.grey[800],
-              foregroundColor: Colors.white,
             ),
-          ),
+            const SizedBox(height: 8),
+            // LEFT, CENTER, RIGHT row
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // LEFT button
+                IconButton(
+                  onPressed: onLeft,
+                  icon: const Icon(Icons.arrow_back),
+                  iconSize: 40,
+                  style: IconButton.styleFrom(
+                    backgroundColor: Colors.grey[800],
+                    foregroundColor: Colors.white,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                // CENTER (non-functional placeholder)
+                Container(
+                  width: 56,
+                  height: 56,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                // RIGHT button
+                IconButton(
+                  onPressed: onRight,
+                  icon: const Icon(Icons.arrow_forward),
+                  iconSize: 40,
+                  style: IconButton.styleFrom(
+                    backgroundColor: Colors.grey[800],
+                    foregroundColor: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            // DOWN button
+            IconButton(
+              onPressed: onDown,
+              icon: const Icon(Icons.arrow_downward),
+              iconSize: 40,
+              style: IconButton.styleFrom(
+                backgroundColor: Colors.grey[800],
+                foregroundColor: Colors.white,
+              ),
+            ),
+          ],
+        ),
         ],
       ),
     );
